@@ -1,11 +1,17 @@
 #include <iostream>
 using namespace std;
+
+// Created Structure
 struct Node
 {
     int data;
     struct Node *next;
 };
+
+// Head node
 struct Node *head = NULL;
+
+// Insert data in linked list
 void insert(int new_data)
 {
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
@@ -13,6 +19,8 @@ void insert(int new_data)
     new_node->next = head;
     head = new_node;
 }
+
+// Inserting node at 1st position 
 struct Node * InsertAtFirst(int data){
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     ptr->data = data;
@@ -20,6 +28,8 @@ struct Node * InsertAtFirst(int data){
     head = ptr;
     return ptr;
 }
+
+// Inserting node index wise
 struct Node * InsertInBetween(int data, int index){
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     struct Node *p = head;
@@ -33,6 +43,8 @@ struct Node * InsertInBetween(int data, int index){
     p->next = ptr;
     return head;
 }
+
+// Inserting node at the end of linked list
 struct Node * InsertAtEnd(int data){
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     struct Node *p = head;
@@ -46,6 +58,8 @@ struct Node * InsertAtEnd(int data){
     ptr->next = NULL;
     return head;
 }
+
+// Inserting node after a perticular node
 struct Node * InsertAfterNode(int prevNode, int data){
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     struct Node *p = head;
@@ -59,12 +73,16 @@ struct Node * InsertAfterNode(int prevNode, int data){
     p->next = ptr;
     return head;
 }
+
+// Delete first node
 struct Node * DeleteFirstNode(){
     struct Node *ptr = head;
     head = head->next;
     free(ptr);
     return head;
 }
+
+// Delete node index wise
 struct Node * DeleteInBetween(int index){
     struct Node *p = head;
     struct Node *q = head->next;
@@ -77,6 +95,8 @@ struct Node * DeleteInBetween(int index){
     free(q);       
     return head;
 }
+
+// Delete last node 
 struct Node * DeleteLastNode(){
     struct Node *p = head;
     struct Node *q = head->next;
@@ -89,6 +109,8 @@ struct Node * DeleteLastNode(){
     free(q);       
     return head;
 }
+
+// Delete a perticular node using it's value
 struct Node * DeleteNodeWithValue(int data){
     struct Node *p = head;
     struct Node *q = head->next;
@@ -105,6 +127,8 @@ struct Node * DeleteNodeWithValue(int data){
     }
     return head;
 }
+
+// Display linked list
 void display()
 {
     struct Node *ptr;
