@@ -1,12 +1,17 @@
 #include <iostream>
 using namespace std;
 
+// Structure for linked list
 struct Node
 {
     int data;
     struct Node *next;
 };
+
+// Declare global variable top
 struct Node *top = NULL;
+
+// Checks stack is empty or not if empty it returns true if not empty it returns false
 int isEmpty()
 {
     if (top == NULL)
@@ -18,6 +23,8 @@ int isEmpty()
         return false;
     }
 }
+
+// Checks stack is full or not if full it returns true if not full it returns false
 int isFull()
 {
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
@@ -30,6 +37,8 @@ int isFull()
         return false;
     }
 }
+
+// Push the element in stack
 struct Node *push(int data)
 {
     if (isFull())
@@ -45,6 +54,8 @@ struct Node *push(int data)
         return top;
     }
 }
+
+// Pop element from stack
 int pop()
 {
     if (isEmpty())
@@ -61,6 +72,8 @@ int pop()
         return x;
     }
 }
+
+// Display stack elements
 void display()
 {
     struct Node *ptr;
