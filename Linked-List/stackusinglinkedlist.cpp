@@ -51,12 +51,12 @@ struct Node *push(int data)
         p->data = data;
         p->next = top;
         top = p;
-        return top;
     }
+        return top;
 }
 
 // Pop element from stack
-int pop()
+void pop()
 {
     if (isEmpty())
     {
@@ -69,7 +69,6 @@ int pop()
         int x = p->data;
         free(p);
         cout<<"Deleted element is: "<<x<<endl;
-        return x;
     }
 }
 
