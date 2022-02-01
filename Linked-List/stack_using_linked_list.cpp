@@ -27,7 +27,7 @@ int isEmpty()
 // Checks stack is full or not if full it returns true if not full it returns false
 int isFull()
 {
-    struct Node *p = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *p = (struct Node *) malloc(sizeof(struct Node));
     if (p == NULL)
     {
         return true;
@@ -47,12 +47,12 @@ struct Node *push(int data)
     }
     else
     {
-        struct Node *p = (struct Node *)malloc(sizeof(struct Node));
+        struct Node *p = (struct Node *) malloc(sizeof(struct Node));
         p->data = data;
         p->next = top;
         top = p;
     }
-        return top;
+    return top;
 }
 
 // Pop element from stack
@@ -68,7 +68,7 @@ void pop()
         top = top->next;
         int x = p->data;
         free(p);
-        cout<<"Deleted element is: "<<x<<endl;
+        cout << "Deleted element is: " << x << endl;
     }
 }
 
