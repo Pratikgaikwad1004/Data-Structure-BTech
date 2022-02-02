@@ -305,6 +305,21 @@ static void reverse(int ll)
     }
 }
 
+// Merge linked list
+struct Node * merge()  
+{  
+    struct Node *ptr = head;  
+  
+    // finding the lat node of first linked list  
+    while (ptr->next != NULL)  
+    {  
+         ptr = ptr->next;
+    }  
+   
+    ptr->next = head2;
+    return head;
+}
+
 // Display first linked list
 void display()
 {
@@ -333,7 +348,7 @@ int main()
     int e = 0;
     do
     {
-        cout << "\n\n1. Create first linked list\n2. Create second linked list\n3. Insert at first\n4. Insert in between\n5. Insert at end\n6. Insert after node\n7. Delete first node\n8. Delete in between\n9. Delete last node\n10. Delete given node\n11. Reverse linked list\n12. Display first linked list\n13. Display second linked list\n14. Exit" << endl;
+        cout << "\n\n1. Create first linked list\n2. Create second linked list\n3. Insert at first\n4. Insert in between\n5. Insert at end\n6. Insert after node\n7. Delete first node\n8. Delete in between\n9. Delete last node\n10. Delete given node\n11. Reverse linked list\n12. Concatenate first and second linked list\n13. Display first linked list\n14. Display second linked list\n15. Exit" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -420,14 +435,17 @@ int main()
             reverse(c);
             break;
         case 12:
+            merge();
+            break;
+        case 13:
             cout << "First linked list is: " << endl;
             display();
             break;
-        case 13:
+        case 14:
             cout << "Second linked list is: " << endl;
             display2();
             break;
-        case 14:
+        case 15:
             e = 1;
             break;
         default:
