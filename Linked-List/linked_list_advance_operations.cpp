@@ -306,16 +306,16 @@ static void reverse(int ll)
 }
 
 // Merge linked list
-struct Node * merge()  
-{  
-    struct Node *ptr = head;  
-  
-    // finding the lat node of first linked list  
-    while (ptr->next != NULL)  
-    {  
-         ptr = ptr->next;
-    }  
-   
+struct Node *merge()
+{
+    struct Node *ptr = head;
+
+    // finding the lat node of first linked list
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+
     ptr->next = head2;
     return head;
 }
