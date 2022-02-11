@@ -99,6 +99,22 @@ struct Node *deletelastnode()
     return head;
 }
 
+// Delete node with value
+struct Node *deleteperticularnode(int node_data)
+{
+    struct Node *p = head->next;
+    struct Node *q = head;
+    while (p->data != node_data)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    q->next = p->next;
+    cout << p->data << " Successfully Deleted" << endl;
+    free(p);
+    return head;
+}
+
 // Display linked list
 void display()
 {
@@ -116,7 +132,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Delete first node\n6. Delete last node\n7. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Delete first node\n6. Delete last node\n7. Delete node with it's value\n8. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -155,6 +171,11 @@ int main()
             deletelastnode();
             break;
         case 7:
+            cout << "Enter index of node you want to delete - "<<endl;
+            cin >> index;
+            deleteperticularnode(index);
+            break;
+        case 8:
             cout << "The linked list is: " << endl;
             display();
             break;
