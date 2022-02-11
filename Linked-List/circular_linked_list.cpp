@@ -83,7 +83,8 @@ struct Node *insertatindex(int data, int index)
 }
 
 // Insert after node
-struct Node * insertafternode(int data, int node_data){
+struct Node *insertafternode(int data, int node_data)
+{
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     ptr->data = data;
     struct Node *p = head->next;
@@ -95,6 +96,23 @@ struct Node * insertafternode(int data, int node_data){
     } while (q->data != node_data);
     q->next = ptr;
     ptr->next = p;
+    return head;
+}
+
+// Delete first node
+struct Node *deletefirstnode()
+{
+    struct Node *p = head;
+    struct Node *q = head->next;
+    do
+    {
+        p = p->next;
+    } while (p->next != head);
+    p->next = head->next;
+    cout << "Deleting element: " << head->data << endl;
+    free(head);
+    head = p->next;
+    cout << "Deleted Successfully" << endl;
     return head;
 }
 
@@ -114,7 +132,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Delete first node\n7. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -154,6 +172,9 @@ int main()
             insertafternode(f, index);
             break;
         case 6:
+            deletefirstnode();
+            break;
+        case 7:
             cout << "The linked list is: " << endl;
             display();
             break;
