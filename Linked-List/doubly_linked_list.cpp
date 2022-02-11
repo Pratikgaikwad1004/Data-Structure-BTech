@@ -54,6 +54,23 @@ struct Node *insertatlast(int data)
     return head;
 }
 
+// Insert at index
+struct Node *insertatindex(int data, int index)
+{
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    ptr->data = data;
+    struct Node *p = head;
+    int i = 0;
+    while (i != index - 1)
+    {
+        p = p->next;
+        i++;
+    }
+    ptr->next = p->next;
+    p->next = ptr;
+    ptr->prev = p;
+    return head;
+}
 // Display linked list
 void display()
 {
@@ -71,7 +88,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -97,6 +114,13 @@ int main()
             insertatlast(f);
             break;
         case 4:
+            cout << "Enter index where you want to insert: " << endl;
+            cin >> index;
+            cout << "Enter Node : " << endl;
+            cin >> f;
+            insertatindex(f, index);
+            break;
+        case 5:
             cout << "The linked list is: " << endl;
             display();
             break;
