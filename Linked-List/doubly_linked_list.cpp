@@ -71,6 +71,34 @@ struct Node *insertatindex(int data, int index)
     ptr->prev = p;
     return head;
 }
+
+// Delete first node
+struct Node *deletefirstnode()
+{
+    struct Node *ptr = head;
+    head = head->next;
+    head->prev = NULL;
+    cout << ptr->data << " Successfully deleted" << endl;
+    free(ptr);
+    return head;
+}
+
+// Delete last node
+struct Node *deletelastnode()
+{
+    struct Node *p = head->next;
+    struct Node *q = head;
+    while (p->next != NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    q->next = NULL;
+    cout << p->data << " Successfully Deleted" << endl;
+    free(p);
+    return head;
+}
+
 // Display linked list
 void display()
 {
@@ -88,7 +116,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Delete first node\n6. Delete last node\n7. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -121,6 +149,12 @@ int main()
             insertatindex(f, index);
             break;
         case 5:
+            deletefirstnode();
+            break;
+        case 6:
+            deletelastnode();
+            break;
+        case 7:
             cout << "The linked list is: " << endl;
             display();
             break;
