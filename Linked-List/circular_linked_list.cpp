@@ -117,7 +117,8 @@ struct Node *deletefirstnode()
 }
 
 // Delete last node
-struct Node * deletelastnode(){
+struct Node *deletelastnode()
+{
     struct Node *p = head->next;
     struct Node *q = head;
     do
@@ -129,6 +130,29 @@ struct Node * deletelastnode(){
     cout << "Deleting element: " << p->data << endl;
     free(p);
     cout << "Deleted Successfully" << endl;
+    return head;
+}
+
+// Delete a perticular node
+struct Node *deleteperticularnode(int data)
+{
+    struct Node *p = head->next;
+    struct Node *q = head;
+    while (p->data != data && p->next != head)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    if (p->data == data)
+    {
+        q->next = p->next;
+        cout << p->data << " Deleted successfully" << endl;
+        free(p);
+    }
+    else
+    {
+        cout << data << " not found" << endl;
+    }
     return head;
 }
 
@@ -148,7 +172,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Delete first node\n7. Delete last node\n8. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Delete first node\n7. Delete last node\n8. Delete node with it's value\n9. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -194,6 +218,11 @@ int main()
             deletelastnode();
             break;
         case 8:
+            cout << "Enter node value you want to delete - " << endl;
+            cin >> index;
+            deleteperticularnode(index);
+            break;
+        case 9:
             cout << "The linked list is: " << endl;
             display();
             break;
