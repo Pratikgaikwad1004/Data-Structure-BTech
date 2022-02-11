@@ -116,6 +116,22 @@ struct Node *deletefirstnode()
     return head;
 }
 
+// Delete last node
+struct Node * deletelastnode(){
+    struct Node *p = head->next;
+    struct Node *q = head;
+    do
+    {
+        q = q->next;
+        p = p->next;
+    } while (p->next != head);
+    q->next = head;
+    cout << "Deleting element: " << p->data << endl;
+    free(p);
+    cout << "Deleted Successfully" << endl;
+    return head;
+}
+
 // Display linked list
 void display()
 {
@@ -132,7 +148,7 @@ int main()
     int n, x, j, wish, f, index;
     do
     {
-        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Delete first node\n7. Display" << endl;
+        cout << "1. Create\n2. Insert at first\n3. Insert at last\n4. Insert at index\n5. Insert after node\n6. Delete first node\n7. Delete last node\n8. Display" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -175,6 +191,9 @@ int main()
             deletefirstnode();
             break;
         case 7:
+            deletelastnode();
+            break;
+        case 8:
             cout << "The linked list is: " << endl;
             display();
             break;
