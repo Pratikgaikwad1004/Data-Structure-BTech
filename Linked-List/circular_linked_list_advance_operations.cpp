@@ -170,6 +170,40 @@ struct Node *deleteperticularnode(int data, int ll)
     return head2;
 }
 
+// Concatenate two linked list
+struct Node * concatenate(){
+    struct Node *p = head;
+    struct Node *q = head2;
+    do
+    {
+        p = p->next;
+    } while (p->next != head);
+    p->next = head2;
+    do
+    {
+        q = q->next;
+    } while (q->next != head2);
+    q->next = head;
+    return head;
+}
+
+// Reverse linked list
+struct Node * reverse(){
+    struct Node *p = NULL;
+    struct Node *ptr = head;
+    struct Node *n = NULL;
+    do
+    {
+        n = ptr->next;
+        ptr->next = p;
+        p = ptr;
+        ptr = n;
+    } while (ptr != head);
+    
+    head = p;
+    return head;
+}
+
 // Display first linked list
 void display()
 {
@@ -199,7 +233,7 @@ int main()
     int n, x, j, wish, f, index, c;
     do
     {
-        cout << "1. Create first linked list\n2. Create second linked list\n3. Insert at first\n4. Insert at last\n5. Insert after node\n6. Delete first node\n7. Delete last node\n8. Delete node with it's value\n9. Display first linked list\n10. Display second linked list" << endl;
+        cout << "1. Create first linked list\n2. Create second linked list\n3. Insert at first\n4. Insert at last\n5. Insert after node\n6. Delete first node\n7. Delete last node\n8. Delete node with it's value\n9. Concatenate first and second linked list\n10. Reverse linked list\n11. Display first linked list\n12. Display second linked list" << endl;
         cout << "Enter your choice : " << endl;
         cin >> j;
         switch (j)
@@ -265,10 +299,16 @@ int main()
             deleteperticularnode(index, c);
             break;
         case 9:
+            concatenate();
+            break;
+        case 10:
+            reverse();
+            break;
+        case 11:
             cout << "The first linked list is: " << endl;
             display();
             break;
-        case 10:
+        case 12:
             cout << "\nThe second linked list is: " << endl;
             display2();
             break;
