@@ -133,7 +133,7 @@ struct Node *deletelastnode()
     return head;
 }
 
-// Delete a perticular node
+// Delete a node with it's value
 struct Node *deleteperticularnode(int data)
 {
     struct Node *p = head->next;
