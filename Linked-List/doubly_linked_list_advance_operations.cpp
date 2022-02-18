@@ -138,7 +138,8 @@ struct Node *deleteperticularnode(int node_data, int ll)
     return head2;
 }
 
-struct Node * concatenate(){
+struct Node *concatenate()
+{
     struct Node *p = head;
     while (p->next != NULL)
     {
@@ -228,7 +229,7 @@ int main()
             cout << "Enter 1 for delete node from first linked list or enter 2 for second linked list: " << endl;
             cin >> c;
             cout << "Enter node data - ";
-            cin>>index;
+            cin >> index;
             deleteperticularnode(index, c);
             break;
         case 9:
