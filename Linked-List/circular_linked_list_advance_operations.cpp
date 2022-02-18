@@ -188,9 +188,9 @@ struct Node * concatenate(){
 }
 
 // Reverse linked list
-struct Node * reverse(){
+struct Node * reverse(int ll){
     struct Node *p = NULL;
-    struct Node *ptr = head;
+    struct Node *ptr = ll == 1 ? head : head2;
     struct Node *n = NULL;
     do
     {
@@ -198,10 +198,12 @@ struct Node * reverse(){
         ptr->next = p;
         p = ptr;
         ptr = n;
-    } while (ptr != head);
+    } while (ptr != (ll == 1 ? head : head2));
     
-    head = p;
+    ll == 1 ? head->next = p : head2->next = p;
+    ll == 1 ? head = p : head2 = p;
     return head;
+    return head2;
 }
 
 // Display first linked list
@@ -302,7 +304,9 @@ int main()
             concatenate();
             break;
         case 10:
-            reverse();
+            cout << "Enter 1 for change first linked list or enter 2 for change in second linked list: " << endl;
+            cin >> c;
+            reverse(c);
             break;
         case 11:
             cout << "The first linked list is: " << endl;
