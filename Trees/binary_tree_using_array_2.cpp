@@ -21,7 +21,8 @@ void root(char data)
 // Set node
 void setnode(char data, int treeindex)
 {
-   if (tree[(treeindex - 1) / 2] == NULL)
+    // It checks parent node
+    if (tree[(treeindex - 1) / 2] == '\0')
     {
         cout << "\nCan't set child at index " << treeindex << " , no parent found" << endl;
     }
