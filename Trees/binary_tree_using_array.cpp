@@ -4,6 +4,7 @@ using namespace std;
 // Array
 char tree[10];
 
+// Set root node
 void root(char data)
 {
     if (tree[0] != '\0')
