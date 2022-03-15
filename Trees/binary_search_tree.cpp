@@ -67,11 +67,11 @@ struct Node *createnode(char data)
 }
 
 // Insert in BST
-struct Node *insert(int data)
+struct Node *insert(char data)
 {
     if (root == NULL)
     {
-        cout<<"Root node is empty please create root node first"<<endl;
+        cout << "Root node is empty please create root node first" << endl;
         return root;
     }
     else
@@ -116,18 +116,17 @@ struct Node *insert(int data)
     return root;
 }
 
-// Insert in BST
-struct Node *search(int data)
+// Search in BST
+struct Node *search(char data)
 {
     if (root == NULL)
     {
-        cout<<"Root node is empty please create root node first"<<endl;
+        cout << "Root node is empty please create root node first" << endl;
         return root;
     }
     else
     {
         struct Node *p = root;
-        char choice;
         while (1)
         {
             if (root->data == data)
@@ -139,7 +138,7 @@ struct Node *search(int data)
             {
                 if (p->left == NULL)
                 {
-                    cout << "Root node dosen't have child"<<endl;
+                    cout << "Node not found" << endl;
                     break;
                 }
                 else
@@ -150,14 +149,13 @@ struct Node *search(int data)
                         cout << p->data << " found in tree";
                         break;
                     }
-                     
                 }
             }
             else
             {
                 if (p->right == NULL)
                 {
-                    cout << "Node not found"<<endl;
+                    cout << "Node not found" << endl;
                     break;
                 }
                 else
@@ -174,6 +172,106 @@ struct Node *search(int data)
     }
     return root;
 }
+
+// Delete from BST
+// struct Node *Delete(char data)
+// {
+//     if (root == NULL)
+//     {
+//         cout << "Root node is empty please create root node first" << endl;
+//         return root;
+//     }
+//     else
+//     {
+//         struct Node *p = root;
+//         struct Node *temp;
+//         struct Node *tempParent;
+//         while (1)
+//         {
+//             if (root->data == data)
+//             {
+//                 p = p->left;
+//                 struct Node *q = p->right;
+//                 while (q->right != NULL)
+//                 {
+//                     q = q->right;
+//                     p = p->right;
+//                 }
+//                 root->data = q->data;
+//                 p->right = NULL;
+//                 free(q);
+//                 cout << "Node deleted successfully";
+//                 break;
+//             }
+//             else if (data < p->data)
+//             {
+//                 if (p->left == NULL)
+//                 {
+//                     cout << "Node not found" << endl;
+//                     break;
+//                 }
+//                 else
+//                 {
+//                     temp = p->left;
+//                     tempParent = p->left;
+//                     if (temp->data == data)
+//                     {
+//                         if (temp->left == NULL && temp->right == NULL)
+//                         {
+//                             p->left = NULL;
+//                             free(temp);
+//                             cout << "Node deleted";
+//                             break;
+//                         }
+//                         else
+//                         {
+//                             tempParent = tempParent->right;
+
+//                             while (tempParent->left != NULL && tempParent->right != NULL)
+//                             {
+//                                 tempParent = tempParent->right;
+//                                 temp = temp->right;
+//                             }
+//                             cout << tempParent->data << endl;
+//                             cout << temp->data << endl;
+//                             cout << p->data << endl;
+//                             p->data = tempParent->data;
+//                             temp->right = NULL;
+//                             free(temp);
+//                             cout << "Node deleted";
+//                             break;
+//                         }
+//                     }
+
+//                     p = p->left;
+//                     temp = temp->left;
+//                 }
+//             }
+//             else
+//             {
+//                 if (p->right == NULL)
+//                 {
+//                     cout << "Node not found" << endl;
+//                     break;
+//                 }
+//                 else
+//                 {
+//                     temp = p->right;
+//                     if (temp->left == NULL && temp->right == NULL && temp->data == data)
+//                     {
+//                         p->right = NULL;
+//                         free(temp);
+//                         cout << "Node deleted";
+//                         break;
+//                     }
+//                     p = p->right;
+//                     temp = temp->right;
+//                 }
+//             }
+//         }
+//     }
+//     return root;
+// }
 
 // Preorder traversal
 void preOrder(struct Node *r)
@@ -240,7 +338,9 @@ int main()
             search(data);
             break;
         case 4:
-
+            cout << "Enter node - " << endl;
+            cin >> data;
+            //Delete(data);
             break;
         case 5:
             cout << "Preorder Traversal" << endl;
